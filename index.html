@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacquelyn Lloyd — Trusted Advisor to CEOs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2332;
+      --navy-mid: #243045;
+      --navy-light: #2e3d54;
+      --gold:   #c9a96e;
+      --gold-light: #dfc090;
+      --white:  #faf9f7;
+      --off-white: #f0ede8;
+      --text-muted: #8a9ab5;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--navy);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(26, 35, 50, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-cta:hover { border-color: var(--gold); }
+
+    .nav-linkedin {
+      display: flex;
+      align-items: center;
+      color: rgba(250, 249, 247, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-linkedin:hover { color: var(--gold); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 6rem;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(250, 249, 247, 0.7);
+      max-width: 520px;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-action {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .hero-action:hover { opacity: 0.75; }
+
+    .hero-photo {
+      position: relative;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201, 169, 110, 0.18);
+      border-radius: 3px;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center 12%;
+      border-radius: 2px;
+      display: block;
+      filter: grayscale(8%) contrast(1.04);
+    }
+
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 2.5rem; }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-inner.wide {
+      max-width: 1100px;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1.75rem;
+      color: var(--navy);
+    }
+
+    h2 em {
+      font-style: italic;
+    }
+
+    p {
+      font-weight: 300;
+      color: #3a4a5e;
+      margin-bottom: 1.25rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ── WHO I WORK WITH ── */
+    #who { background: var(--off-white); }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(26, 35, 50, 0.1);
+      border: 1px solid rgba(26, 35, 50, 0.1);
+      margin-top: 3rem;
+    }
+
+    .who-item {
+      background: var(--off-white);
+      padding: 2.25rem 2.5rem;
+    }
+
+    .who-item-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .who-item-value {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    /* ── HOW I WORK ── */
+    #how { background: var(--white); }
+
+    /* ── WHAT I BRING ── */
+    #what { background: var(--navy); }
+
+    #what h2, #what p { color: var(--white); }
+    #what h2 em { color: var(--gold-light); }
+    #what p { color: rgba(250, 249, 247, 0.72); }
+    #what .section-label { color: var(--gold); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--off-white); }
+
+    .services-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(26, 35, 50, 0.12);
+    }
+
+    .service-item {
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(26, 35, 50, 0.12);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      align-items: baseline;
+    }
+
+    .service-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #3a4a5e;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── CREDENTIALS ── */
+    #credentials {
+      background: var(--navy-mid);
+      padding: 3.5rem 2.5rem;
+    }
+
+    .creds-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+    }
+
+    .cred-item {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(250, 249, 247, 0.6);
+      letter-spacing: 0.04em;
+      padding: 0.35rem 2rem;
+      position: relative;
+    }
+
+    .cred-item + .cred-item::before {
+      content: '·';
+      position: absolute;
+      left: -0.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ── QUOTE ── */
+    #quote {
+      background: var(--white);
+      padding: 8rem 2.5rem;
+    }
+
+    blockquote {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    blockquote p {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 2rem;
+    }
+
+    .quote-attribution {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 5rem;
+      line-height: 0.6;
+      color: rgba(201, 169, 110, 0.2);
+      display: block;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+
+    /* ── TEMPLATE STORE ── */
+    #templates {
+      background: var(--navy);
+      padding: 6rem 2.5rem;
+      text-align: center;
+    }
+
+    #templates .section-label {
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    #templates h2 {
+      color: var(--white);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+    }
+
+    #templates p {
+      color: rgba(250, 249, 247, 0.65);
+      max-width: 520px;
+      margin: 0 auto 2.75rem;
+      font-size: 0.97rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.25rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--off-white);
+      padding: 7rem 2.5rem;
+    }
+
+    .contact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left {}
+
+    .contact-left p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .field-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border: 1px solid rgba(26, 35, 50, 0.15);
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(26, 35, 50, 0.3);
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      padding: 0.95rem 2.5rem;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 2px;
+    }
+
+    .btn-dark:hover { background: var(--navy-light); }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(250, 249, 247, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .hero-photo {
+        max-width: 260px;
+      }
+
+      .service-item {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .who-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .field-group {
+        grid-template-columns: 1fr;
+      }
+
+      .creds-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+      }
+
+      .cred-item + .cred-item::before { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1.1rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 5rem; }
+      #credentials { padding: 3rem 1.5rem; }
+      #quote { padding: 6rem 1.5rem; }
+      #templates { padding: 5rem 1.5rem; }
+      #contact { padding: 5rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
+
+    /* ── SCROLL FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-name">Jacquelyn Lloyd</a>
+    <div class="nav-right">
+      <a href="https://www.linkedin.com/in/jacquelynlloyd" target="_blank" rel="noopener" class="nav-linkedin" aria-label="LinkedIn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.45 20.45h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.94v5.666H9.354V9h3.414v1.561h.048c.476-.9 1.637-1.85 3.37-1.85 3.602 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.017H3.555V9h3.564v11.45zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text fade-in">
+        <p class="hero-eyebrow">HR Executive Advisory</p>
+        <h1 class="hero-headline">
+          The trusted advisor<br />
+          CEOs call when the<br />
+          <em>people decisions get hard.</em>
+        </h1>
+        <p class="hero-sub">
+          Succession. Executive performance. Separations. Organizational change.
+          The conversations that keep you up at night — that's where I work.
+        </p>
+        <a href="#contact" class="hero-action">Start a conversation</a>
+      </div>
+      <div class="hero-photo fade-in" style="transition-delay: 0.15s">
+        <img src="headshot.jpg" alt="Jacquelyn Lloyd" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO I WORK WITH -->
+  <section id="who">
+    <div class="section-inner wide">
+      <div class="fade-in">
+        <p class="section-label">Who I Work With</p>
+        <h2>PE-backed and privately held businesses<br /><em>at a turning point.</em></h2>
+        <p style="max-width: 600px;">
+          You're in the consumer packaged goods space. You've built something real. And you've
+          outgrown your current HR setup — you need someone who can think at the executive level,
+          not manage paperwork.
+        </p>
+      </div>
+      <div class="who-grid fade-in" style="transition-delay: 0.1s">
+        <div class="who-item">
+          <p class="who-item-label">Ownership</p>
+          <p class="who-item-value">PE-backed &amp; privately held businesses</p>
+        </div>
+        <div class="who-item">
+          <p class="who-item-label">Industry</p>
+          <p class="who-item-value">Consumer packaged goods</p>
+        </div>
+        <div class="who-item">
+          <p class="who-item-label">Company Size</p>
+          <p class="who-item-value">15–250 employees</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section id="how">
+    <div class="section-inner fade-in">
+      <p class="section-label">How I Work</p>
+      <h2>Available when it matters.<br /><em>Not on a schedule.</em></h2>
+      <div class="gold-rule"></div>
+      <p>
+        I'm not scheduled for the sake of being scheduled. My clients keep me in their back pocket
+        and call when something hard is happening. I'm the person who picks up.
+      </p>
+      <p>
+        Most of the work I do doesn't happen in a boardroom presentation. It happens in a phone call
+        before the all-hands. In a quiet conversation before the board meeting. In the thirty minutes
+        between when you realize you have a problem and when you have to act on it.
+      </p>
+      <p>
+        Engagements are shaped around what you need — retained advisory, a focused assessment,
+        facilitated off-sites, a sensitive separation. I don't sell packages. I solve problems.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHAT I BRING -->
+  <section id="what">
+    <div class="section-inner fade-in">
+      <p class="section-label">What I Bring</p>
+      <h2>I read systems,<br /><em>not just people.</em></h2>
+      <div class="gold-rule" style="background: rgba(201,169,110,0.4);"></div>
+      <p>
+        I notice when patterns are reaching an inflection point — when what looks like a performance
+        problem is actually a structural one, when what looks like a personnel issue is actually a
+        succession issue.
+      </p>
+      <p>
+        Twenty-five years of sitting inside organizations at the VP level and above gives you a
+        particular kind of sight. You stop being surprised by people and start understanding why
+        systems produce the outcomes they do.
+      </p>
+      <p>
+        I bring that to every engagement. The analysis. The credibility to say the hard thing.
+        And the judgment to know when to say it, and how.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner wide fade-in">
+      <p class="section-label">How I Can Help</p>
+      <h2>The work I do.</h2>
+      <div class="services-list">
+        <div class="service-item">
+          <p class="service-name">Retained Advisory</p>
+          <p class="service-desc">Available when it counts, not on a schedule. I stay in your back pocket and engage when the situation calls for it — before the hard decision, not after.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-name">Organizational Assessments</p>
+          <p class="service-desc">I go in, look clearly, and deliver a picture worth acting on. Not a report for the shelf — a clear-eyed read of what's working, what isn't, and what needs to change.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-name">Executive Retreats &amp; Facilitation</p>
+          <p class="service-desc">I move ideas forward and help leadership teams think together. Not as a moderator. As someone who can hold the room and keep the conversation honest.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-name">Separations</p>
+          <p class="service-desc">Handled with precision and no surprises. I manage the complexity so the transition is clean — for the individual, the team, and the organization.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-name">HR Team Mentoring &amp; Executive Representation</p>
+          <p class="service-desc">The strategic voice your HR person doesn't have yet. I work alongside your team to elevate their capability and represent HR at the executive table.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS BAR -->
+  <div id="credentials">
+    <div class="creds-inner">
+      <span class="cred-item">25+ years HR leadership</span>
+      <span class="cred-item">Former VP of HR, Columbia Distributing</span>
+      <span class="cred-item">Labor Relations Executive, 12 years</span>
+      <span class="cred-item">Court-Appointed Mediator, 9 years</span>
+      <span class="cred-item">CPG Industry Specialist</span>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <section id="quote">
+    <div class="fade-in">
+      <span class="quote-mark">&ldquo;</span>
+      <blockquote>
+        <p>Quickly gains credibility and trust<br />with anyone she interacts with.</p>
+        <span class="quote-attribution">CEO, Food &amp; Beverage Client</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- TEMPLATE STORE -->
+  <section id="templates">
+    <div class="fade-in">
+      <span class="section-label">HR Template Store</span>
+      <h2>For the days you don't need me.</h2>
+      <p>
+        Expert-level HR tools you can use right now — built from the same thinking I bring
+        to every engagement.
+      </p>
+      <a href="#" class="btn">Visit the HR Template Store</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-left fade-in">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's talk.</h2>
+        <div class="gold-rule"></div>
+        <p>
+          If something is keeping you up at night, that's usually a sign it deserves a real
+          conversation. I respond personally.
+        </p>
+      </div>
+      <div class="fade-in" style="transition-delay: 0.1s">
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="field-group">
+            <div>
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="First &amp; Last" required />
+            </div>
+            <div>
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Company name" required />
+            </div>
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div>
+            <label for="message">What's keeping you up at night?</label>
+            <textarea id="message" name="message" placeholder="Tell me what's going on..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-dark">Send Message</button>
+            <p class="form-note">I read every message and respond personally.</p>
+          </div>
+        </form>
+        <div id="form-success" style="display:none; padding: 2rem; background: var(--white); border-left: 3px solid var(--gold);">
+          <p style="font-family: var(--serif); font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem;">Thank you.</p>
+          <p style="font-size: 0.92rem; color: #3a4a5e; margin: 0;">I'll be in touch shortly.</p>
+        </div>
+        <p id="form-error" style="display:none; margin-top: 1rem; font-size: 0.85rem; color: #b94a4a;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-copy">&copy; 2026 Jacquelyn Lloyd. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Contact form
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const payload = {
+        name:    document.getElementById('name').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        email:   document.getElementById('email').value.trim(),
+        message: document.getElementById('message').value.trim(),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || 'Something went wrong. Please try again.');
+        }
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } catch (err) {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        const note = document.getElementById('form-error');
+        note.textContent = err.message;
+        note.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
