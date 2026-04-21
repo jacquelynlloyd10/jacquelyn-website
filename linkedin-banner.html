@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Banner — Jacquelyn Lloyd</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0e1520;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+      font-family: Arial, sans-serif;
+      gap: 2rem;
+    }
+    .label {
+      color: rgba(255,255,255,0.3);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .preview-wrap {
+      width: 100%;
+      max-width: 1584px;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    }
+    button {
+      padding: 14px 40px;
+      background: transparent;
+      border: 1px solid #c9a96e;
+      color: #c9a96e;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c9a96e;
+      color: #1a2332;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="label">LinkedIn Banner — 1584 × 396 px</p>
+
+  <div class="preview-wrap">
+    <canvas id="banner" width="1584" height="396"></canvas>
+  </div>
+
+  <a href="linkedin-banner.jpg" download="linkedin-banner.jpg" class="btn-download">Download as JPG</a>
+
+  <script>
+    var W = 1584;
+    var H = 396;
+
+    var canvas = document.getElementById("banner");
+    var ctx = canvas.getContext("2d");
+
+    function draw() {
+      drawTo(ctx, W, H);
+    }
+
+    function drawTo(c, w, h) {
+      // Background
+      c.fillStyle = "#1a2332";
+      c.fillRect(0, 0, w, h);
+
+      // Subtle gradient overlay
+      var grad = c.createLinearGradient(0, 0, w, 0);
+      grad.addColorStop(0,   "rgba(46,61,84,0.4)");
+      grad.addColorStop(0.5, "rgba(26,35,50,0)");
+      grad.addColorStop(1,   "rgba(8,14,24,0.5)");
+      c.fillStyle = grad;
+      c.fillRect(0, 0, w, h);
+
+      // ── GOLD VERTICAL BAR ──
+      var barX = 88;
+      var barH = 190;
+      var barY = (h - barH) / 2;
+      c.fillStyle = "#c9a96e";
+      c.fillRect(barX, barY, 4, barH);
+
+      // ── LEFT TEXT ──
+      var textX = barX + 44;
+      var midY  = h / 2;
+
+      // "Jacquelyn Lloyd"
+      c.fillStyle = "#faf9f7";
+      c.font = "84px Georgia, serif";
+      c.textBaseline = "alphabetic";
+      c.textAlign = "left";
+      c.fillText("Jacquelyn Lloyd", textX, 170);
+
+      // "Privately Held · PE-Backed · CPG"
+      c.fillStyle = "#dfc090";
+      c.font = "italic 28px Georgia, serif";
+      c.fillText("Privately Held  \u00B7  PE-Backed  \u00B7  CPG", textX + 2, 220);
+
+      // ── RIGHT TEXT ──
+      var rightEdge = w - 88;
+
+      // "HR EXECUTIVE ADVISORY" — spaced
+      c.fillStyle = "#faf9f7";
+      c.font = "bold 19px Arial, sans-serif";
+      drawSpaced(c, "HR  EXECUTIVE  ADVISORY", rightEdge, midY - 14, 5, "right");
+
+      // Gold rule
+      var ruleW = 240;
+      c.fillStyle = "#c9a96e";
+      c.fillRect(rightEdge - ruleW, midY + 4, ruleW, 1);
+
+      // "JACQUELYNLLOYD.COM"
+      c.fillStyle = "rgba(250,249,247,0.5)";
+      c.font = "13px Arial, sans-serif";
+      drawSpaced(c, "JACQUELYNLLOYD.COM", rightEdge, midY + 34, 3.5, "right");
+    }
+
+    function drawSpaced(ctx, text, x, y, spacing, align) {
+      // Measure full width
+      ctx.textAlign = "left";
+      var total = 0;
+      for (var i = 0; i < text.length; i++) {
+        total += ctx.measureText(text[i]).width;
+        if (i < text.length - 1) total += spacing;
+      }
+      var cx = (align === "right") ? x - total : x;
+      for (var i = 0; i < text.length; i++) {
+        ctx.fillText(text[i], cx, y);
+        cx += ctx.measureText(text[i]).width + spacing;
+      }
+    }
+
+    // Draw immediately — no external fonts to wait for
+    draw();
+
+    function download() {
+      var offscreen = document.createElement("canvas");
+      offscreen.width  = 1584;
+      offscreen.height = 396;
+      var octx = offscreen.getContext("2d");
+      octx.fillStyle = "#1a2332";
+      octx.fillRect(0, 0, 1584, 396);
+      drawTo(octx, 1584, 396);
+
+      var dataURL = offscreen.toDataURL("image/png");
+
+      // Primary: anchor download
+      try {
+        var link = document.createElement("a");
+        link.download = "linkedin-banner.png";
+        link.href = dataURL;
+        link.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+      } catch(e) {}
+
+      // Fallback: open in new tab so user can right-click > Save Image As
+      setTimeout(function() {
+        var w = window.open();
+        if (w) {
+          w.document.write('<img src="' + dataURL + '" style="max-width:100%"><p style="font-family:sans-serif;color:#666">Right-click the image and choose <strong>Save Image As</strong> &rarr; save as <strong>linkedin-banner.png</strong></p>');
+          w.document.close();
+        }
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
