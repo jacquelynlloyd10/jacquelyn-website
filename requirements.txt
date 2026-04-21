@@ -1,0 +1,3 @@
+# No third-party dependencies.
+# server.py uses only Python standard library modules:
+#   json, hashlib, os, sys, urllib.request, urllib.error, http.server
